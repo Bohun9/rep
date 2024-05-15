@@ -7,7 +7,7 @@ class NFANode:
 
     def get_edges(self, c):
         if c not in self.edges:
-            return {}
+            return set()
         else:
             return self.edges[c]
 
@@ -185,6 +185,8 @@ def re_matcher(text, nfa):
         reachable = new_reachable
         if nfa.final in reachable:
             max_match = i + 1
+        if not reachable:
+            break
 
     return max_match
 
